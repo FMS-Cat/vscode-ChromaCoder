@@ -3,21 +3,36 @@
 	"displayName": "ChromaCoder",
 	"description": "Make your vscode chroma-keying-able",
 	"version": "0.0.1",
+	"publisher": "fms-cat",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
 	"categories": [
+		"Themes",
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:chromacoder.activate"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
-			"command": "extension.helloWorld",
-			"title": "Hello World"
-		}]
+    "themes": [
+      {
+        "label": "ChromaCoder (Green)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ChromaCoder-green.json"
+      }
+    ],
+		"commands": [
+			{
+				"command": "chromacoder.activate",
+				"title": "ChromaCoder: Activate"
+			},
+			{
+				"command": "chromacoder.decativate",
+				"title": "ChromaCoder: Deactivate"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
