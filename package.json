@@ -29,7 +29,7 @@
 				"title": "ChromaCoder: Activate"
 			},
 			{
-				"command": "chromacoder.decativate",
+				"command": "chromacoder.deactivate",
 				"title": "ChromaCoder: Deactivate"
 			}
 		]
