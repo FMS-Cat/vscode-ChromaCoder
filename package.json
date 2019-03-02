@@ -2,7 +2,7 @@
 	"name": "chromacoder",
 	"displayName": "ChromaCoder",
 	"description": "Make your vscode chroma-keying-able",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "fms-cat",
 	"engines": {
 		"vscode": "^1.31.0"
