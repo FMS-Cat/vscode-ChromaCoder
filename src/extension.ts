@@ -1,47 +1,51 @@
 import * as vscode from 'vscode';
 
 let isActivated = false;
-let currentDecoration: vscode.TextEditorDecorationType | null = null;
+let currentEditors: vscode.TextEditor[] = [];
 
-function applyDecoration( editor: vscode.TextEditor ) {
-  const textDecoration = vscode.window.createTextEditorDecorationType( <vscode.DecorationRenderOptions>{
-    textDecoration: `none; background: rgba(0, 0, 0, 1);`,
-    rangeBehavior: vscode.DecorationRangeBehavior.ClosedClosed,
+function applyDecoration( decoration: vscode.TextEditorDecorationType ) {
+  currentEditors.forEach( ( editor ) => {
+    editor.setDecorations( decoration, [ new vscode.Range(
+      new vscode.Position ( 0, 0 ),
+      new vscode.Position( editor.document.lineCount, 9999 )
+    ) ] );
   } );
-  editor.setDecorations( textDecoration, [ new vscode.Range(
-    new vscode.Position ( 0, 0 ),
-    new vscode.Position( editor.document.lineCount, 9999 )
-  ) ] );
+}
 
-  currentDecoration = textDecoration;
-  return textDecoration;
+function removeDecoration( decoration: vscode.TextEditorDecorationType ) {
+  currentEditors.forEach( ( editor ) => {
+    editor.setDecorations( decoration, [] );
+  } );
 }
 
 export function activate( context: vscode.ExtensionContext ) {
-  context.subscriptions.push( ...[
-    vscode.commands.registerCommand( 'chromacoder.activate', () => {
-      const activeEditor = vscode.window.activeTextEditor;
-      if ( !activeEditor ) { return; }
+  const decorationType = vscode.window.createTextEditorDecorationType( <vscode.DecorationRenderOptions>{
+    textDecoration: `none; background: rgba(0, 0, 0, 1);`,
+    rangeBehavior: vscode.DecorationRangeBehavior.OpenOpen,
+  } );
 
+  currentEditors = vscode.window.visibleTextEditors;
+
+  context.subscriptions.push( ...[
+    decorationType,
+
+    vscode.commands.registerCommand( 'chromacoder.activate', () => {
       isActivated = true;
-      context.subscriptions.push( applyDecoration( activeEditor ) );
+      applyDecoration( decorationType );
     } ),
 
     vscode.commands.registerCommand( 'chromacoder.deactivate', () => {
       isActivated = false;
-
-      if ( currentDecoration ) {
-        currentDecoration.dispose();
-      }
+      removeDecoration( decorationType );
     } ),
 
-    vscode.window.onDidChangeActiveTextEditor( ( editor ) => {
-      if ( !isActivated ) { return; }
+    vscode.window.onDidChangeVisibleTextEditors( ( editors ) => {
+      currentEditors = editors;
 
-      if ( editor ) {
-        context.subscriptions.push( applyDecoration( editor ) );
+      if ( isActivated ) {
+        applyDecoration( decorationType );
       }
-    }, null )
+    }, null ),
   ] );
 }
 
