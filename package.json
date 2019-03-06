@@ -3,6 +3,10 @@
   "displayName": "ChromaCoder",
   "description": "Make your vscode chroma-keying-able",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FMS-Cat/vscode-ChromaCoder"
+  },
   "publisher": "fms-cat",
   "engines": {
     "vscode": "^1.31.0"
