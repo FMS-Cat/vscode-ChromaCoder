@@ -1,7 +1,17 @@
-# Change Log
-All notable changes to the "chromacoder" extension will be documented in this file.
+# CHANGELOG.md
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 0.1.0
 
-## [Unreleased]
-- Initial release
+initial
+
+### 0.0.3
+
+initial -1
+
+### 0.0.2
+
+initial -2
+
+### 0.0.1
+
+initial -3
