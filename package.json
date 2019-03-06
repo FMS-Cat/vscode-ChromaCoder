@@ -1,51 +1,51 @@
 {
-	"name": "chromacoder",
-	"displayName": "ChromaCoder",
-	"description": "Make your vscode chroma-keying-able",
-	"version": "0.0.3",
-	"publisher": "fms-cat",
-	"engines": {
-		"vscode": "^1.31.0"
-	},
-	"categories": [
-		"Themes",
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:chromacoder.activate"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"themes": [
-			{
-				"label": "ChromaCoder (Green)",
-				"uiTheme": "vs-dark",
-				"path": "./themes/ChromaCoder-green.json"
-			}
-		],
-		"commands": [
-			{
-				"command": "chromacoder.activate",
-				"title": "ChromaCoder: Activate"
-			},
-			{
-				"command": "chromacoder.deactivate",
-				"title": "ChromaCoder: Deactivate"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
-	},
-	"devDependencies": {
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28",
-		"tslint": "^5.12.1",
-		"@types/node": "^10.12.21",
-		"@types/mocha": "^2.2.42"
-	}
+  "name": "chromacoder",
+  "displayName": "ChromaCoder",
+  "description": "Make your vscode chroma-keying-able",
+  "version": "0.1.0",
+  "publisher": "fms-cat",
+  "engines": {
+    "vscode": "^1.31.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:chromacoder.activate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "themes": [
+      {
+        "label": "ChromaCoder (Green)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ChromaCoder-green.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "chromacoder.activate",
+        "title": "ChromaCoder: Activate"
+      },
+      {
+        "command": "chromacoder.deactivate",
+        "title": "ChromaCoder: Deactivate"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "yarn run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "tslint": "^5.12.1",
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42"
+  }
 }
